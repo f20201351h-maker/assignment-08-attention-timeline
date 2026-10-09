@@ -1,0 +1,1438 @@
+{
+  "dateRule": "Each entry's date is the earliest publicly verifiable appearance of the primary source that introduced the technique in the form, and under the name, the field now uses: for arXiv papers, the v1 'Submitted on' date on the arXiv abstract page (not the later conference date); for forum posts and releases, the first-party post or announcement date. Earlier work that computes substantially the same operation in another setting (for example inside an RNN or a memory network) is listed as an 'earlier root' with its own verified date and shown on the card, rather than silently moving the date or hiding it. Adoption dates mark the first verified use in a notable released model and are reported separately.",
+  "effectsKey": "Effects are judged against the default of the moment (dense causal softmax attention as practised when the entry appeared; for the 2014 entry, an RNN encoder-decoder). +2 relieves that bill a lot, -2 makes it markedly worse or gives up a lot of it.",
+  "entries": [
+    {
+      "id": "additive",
+      "name": "Additive attention for translation",
+      "short": "Additive attention",
+      "date": "2014-09-01",
+      "dateEvent": "arXiv v1 of Bahdanau, Cho & Bengio",
+      "kind": "Attention mechanism (RNN era)",
+      "tier": "milestone",
+      "inClassList": false,
+      "primary": "fidelity",
+      "effects": {
+        "compute": -1,
+        "memory": -1,
+        "position": 0,
+        "fidelity": 2
+      },
+      "source": {
+        "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+        "authors": "Bahdanau, Cho, Bengio",
+        "id": "arXiv:1409.0473",
+        "url": "https://arxiv.org/abs/1409.0473",
+        "venue": "ICLR 2015"
+      },
+      "precursors": [
+        {
+          "title": "Graves, 'Generating Sequences With Recurrent Neural Networks' — a soft, differentiable window over the input for handwriting synthesis",
+          "date": "2013-08-04",
+          "url": "https://arxiv.org/abs/1308.0850",
+          "note": "An earlier soft attention-like read; Bahdanau et al. is the version that launched attention in NLP."
+        }
+      ],
+      "adoption": [],
+      "notes": "Included as the prologue: the problem it fixed (squeezing a whole sentence into one fixed-size vector) is the problem linear attention and DeltaNet later re-accept on purpose. Luong et al. (arXiv:1508.04025, 2015-08-17) added multiplicative scoring and a windowed 'local attention'.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "learned-abs",
+      "name": "Learned absolute position embeddings",
+      "short": "Learned positions",
+      "date": "2016-11-07",
+      "dateEvent": "arXiv v1 of Gehring et al., “A Convolutional Encoder Model for Neural Machine Translation”, which adds learned position embeddings for the absolute position of each source word",
+      "kind": "Position encoding",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 1,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "A Convolutional Encoder Model for Neural Machine Translation",
+        "authors": "Gehring, Auli, Grangier, Dauphin",
+        "id": "arXiv:1611.02344",
+        "url": "https://arxiv.org/abs/1611.02344",
+        "venue": "ACL 2017"
+      },
+      "precursors": [
+        {
+          "title": "End-To-End Memory Networks (Sukhbaatar et al.) — learned 'temporal encoding' rows indexed by memory slot",
+          "date": "2015-03-31",
+          "url": "https://arxiv.org/abs/1503.08895",
+          "note": "Learned per-slot vectors that index memory sentences rather than token positions; Gehring et al. cite memory networks as the inspiration."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "ConvS2S (Gehring et al.) — the paper the Transformer cites for learned positional embeddings",
+          "date": "2017-05-08",
+          "url": "https://arxiv.org/abs/1705.03122"
+        },
+        {
+          "what": "Attention Is All You Need tries learned embeddings and reports results 'nearly identical' to sinusoids (Table 3, row E)",
+          "date": "2017-06-12",
+          "url": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "what": "GPT-1 uses learned position embeddings 'instead of the sinusoidal version'",
+          "date": "2018-06-11",
+          "url": "https://openai.com/index/language-unsupervised/",
+          "note": "Release date as reported by web search of OpenAI's page (the page returned HTTP 403 to our fetchers); the quoted sentence was read in OpenAI's PDF."
+        },
+        {
+          "what": "BERT (position embeddings learned during pretraining up to 512 positions)",
+          "date": "2018-10-11",
+          "url": "https://arxiv.org/abs/1810.04805"
+        }
+      ],
+      "notes": "The first audit pass dated this to ConvS2S (May 2017); the independent audit found this earlier paper by the same group, which does the same thing, so the date moved back six months.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "GPT-1",
+        "date": "2018-06-11",
+        "url": "https://openai.com/index/language-unsupervised/"
+      }
+    },
+    {
+      "id": "sdpa",
+      "name": "Scaled dot-product attention (with multi-head and the causal mask)",
+      "short": "Transformer attention",
+      "date": "2017-06-12",
+      "dateEvent": "arXiv v1 of 'Attention Is All You Need'",
+      "kind": "Attention mechanism",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "fidelity",
+      "effects": {
+        "compute": -1,
+        "memory": -1,
+        "position": 0,
+        "fidelity": 2
+      },
+      "source": {
+        "title": "Attention Is All You Need",
+        "authors": "Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, Polosukhin",
+        "id": "arXiv:1706.03762",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "venue": "NeurIPS 2017"
+      },
+      "precursors": [
+        {
+          "title": "Additive attention over RNN states (Bahdanau et al.)",
+          "date": "2014-09-01",
+          "url": "https://arxiv.org/abs/1409.0473",
+          "note": "Attention as a helper to a recurrent network."
+        },
+        {
+          "title": "Luong et al. — dot-product ('multiplicative') attention scores",
+          "date": "2015-08-17",
+          "url": "https://arxiv.org/abs/1508.04025",
+          "note": "Dot-product scoring predates the Transformer; the scaling by 1/√dₖ, multi-head attention and an attention-only network are what is new in 2017."
+        },
+        {
+          "title": "Parikh et al. — intra-sentence (self-)attention",
+          "date": "2016-06-06",
+          "url": "https://arxiv.org/abs/1606.01933",
+          "note": "Tokens attending to tokens of the same sentence, before the Transformer."
+        }
+      ],
+      "adoption": [],
+      "notes": "What is new in 2017 is the scaling by 1/√dₖ, multi-head attention and a network built from attention alone; dot-product scores and self-attention both existed earlier (see earlier roots).",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "sinusoidal",
+      "name": "Sinusoidal position encoding",
+      "short": "Sinusoidal",
+      "date": "2017-06-12",
+      "dateEvent": "arXiv v1 of 'Attention Is All You Need' (same paper as scaled dot-product attention)",
+      "kind": "Position encoding",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 1,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "Attention Is All You Need",
+        "authors": "Vaswani et al.",
+        "id": "arXiv:1706.03762",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "venue": "NeurIPS 2017"
+      },
+      "precursors": [
+        {
+          "title": "End-To-End Memory Networks: a fixed, computed 'position encoding' for word order inside a sentence",
+          "date": "2015-03-31",
+          "url": "https://arxiv.org/abs/1503.08895",
+          "note": "A computed (not learned) position weighting existed earlier, but not a sinusoidal signal for sequence positions in an attention model."
+        }
+      ],
+      "adoption": [],
+      "notes": "The authors chose sinusoids because they hypothesised the model 'may' extrapolate to longer sequences — a hypothesis, not a demonstrated property.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "relative",
+      "name": "Relative position representations",
+      "short": "Relative positions",
+      "date": "2018-03-06",
+      "dateEvent": "arXiv v1 of Shaw, Uszkoreit & Vaswani",
+      "kind": "Position encoding",
+      "tier": "connective",
+      "inClassList": false,
+      "primary": "position",
+      "effects": {
+        "compute": -1,
+        "memory": 0,
+        "position": 2,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "Self-Attention with Relative Position Representations",
+        "authors": "Shaw, Uszkoreit, Vaswani",
+        "id": "arXiv:1803.02155",
+        "url": "https://arxiv.org/abs/1803.02155",
+        "venue": "NAACL 2018"
+      },
+      "precursors": [
+        {
+          "title": "Parikh et al. — distance-sensitive bias terms inside intra-sentence attention",
+          "date": "2016-06-06",
+          "url": "https://arxiv.org/abs/1606.01933",
+          "note": "An earlier relative-distance term in attention."
+        }
+      ],
+      "adoption": [],
+      "notes": "Added because it is the step that brought relative distance into Transformer self-attention — the line RoPE and ALiBi continue.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "transformer-xl",
+      "name": "Segment recurrence (Transformer-XL)",
+      "short": "Transformer-XL",
+      "date": "2019-01-09",
+      "dateEvent": "arXiv v1 of Dai et al.",
+      "kind": "Segment-level recurrence + relative positions",
+      "tier": "connective",
+      "inClassList": false,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": -1,
+        "position": 2,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+        "authors": "Dai, Yang, Yang, Carbonell, Le, Salakhutdinov",
+        "id": "arXiv:1901.02860",
+        "url": "https://arxiv.org/abs/1901.02860",
+        "venue": "ACL 2019"
+      },
+      "precursors": [],
+      "adoption": [],
+      "notes": "Added as the first widely cited answer to 'what crosses the window boundary?' — the question memory-stream designs return to.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "sparse-transformer",
+      "name": "Fixed sparse attention patterns (Sparse Transformer)",
+      "short": "Sparse Transformer",
+      "date": "2019-04-23",
+      "dateEvent": "arXiv v1 of Child, Gray, Radford & Sutskever",
+      "kind": "Sparse / local attention pattern",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "compute",
+      "effects": {
+        "compute": 2,
+        "memory": 0,
+        "position": 1,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Generating Long Sequences with Sparse Transformers",
+        "authors": "Child, Gray, Radford, Sutskever",
+        "id": "arXiv:1904.10509",
+        "url": "https://arxiv.org/abs/1904.10509",
+        "venue": "arXiv preprint"
+      },
+      "precursors": [
+        {
+          "title": "Generating Wikipedia by Summarizing Long Sequences — local attention blocks and memory-compressed attention",
+          "date": "2018-01-30",
+          "url": "https://arxiv.org/abs/1801.10198",
+          "note": "Earlier restriction of which pairs are computed."
+        },
+        {
+          "title": "Image Transformer — blocks of local attention",
+          "date": "2018-02-15",
+          "url": "https://arxiv.org/abs/1802.05751",
+          "note": "Local 1D/2D attention for images."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "GPT-3 uses 'alternating dense and locally banded sparse attention patterns ... similar to the Sparse Transformer'",
+          "date": "2020-05-28",
+          "url": "https://arxiv.org/abs/2005.14165"
+        }
+      ],
+      "notes": "This is “sparse attention” in its first factorized, Transformer-scale form: which pairs are computed is decided by position, not content.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "GPT-3 (alternating dense / banded layers)",
+        "date": "2020-05-28",
+        "url": "https://arxiv.org/abs/2005.14165"
+      }
+    },
+    {
+      "id": "mqa",
+      "name": "Multi-query attention (MQA)",
+      "short": "MQA",
+      "date": "2019-11-06",
+      "dateEvent": "arXiv v1 of Shazeer, 'One Write-Head is All You Need'",
+      "kind": "KV sharing",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "memory",
+      "effects": {
+        "compute": 0,
+        "memory": 2,
+        "position": 0,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Fast Transformer Decoding: One Write-Head is All You Need",
+        "authors": "Shazeer",
+        "id": "arXiv:1911.02150",
+        "url": "https://arxiv.org/abs/1911.02150",
+        "venue": "arXiv preprint"
+      },
+      "precursors": [],
+      "adoption": [
+        {
+          "what": "PaLM uses multi-query attention to cut decoding cost",
+          "date": "2022-04-05",
+          "url": "https://arxiv.org/abs/2204.02311"
+        }
+      ],
+      "notes": "MQA is usually taught as the extreme case of GQA, which is the right way to learn it. Chronologically MQA came first, by three and a half years; GQA is the later compromise between MHA and MQA.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "PaLM",
+        "date": "2022-04-05",
+        "url": "https://arxiv.org/abs/2204.02311"
+      }
+    },
+    {
+      "id": "topk",
+      "name": "Top-k attention (Explicit Sparse Transformer)",
+      "short": "Top-k attention",
+      "date": "2019-12-25",
+      "dateEvent": "arXiv v1 of Zhao et al.",
+      "kind": "Sparse attention (content-based selection)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "fidelity",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 0,
+        "fidelity": 1
+      },
+      "source": {
+        "title": "Explicit Sparse Transformer: Concentrated Attention Through Explicit Selection",
+        "authors": "Zhao, Lin, Zhang, Ren, Su, Sun",
+        "id": "arXiv:1912.11637",
+        "url": "https://arxiv.org/abs/1912.11637",
+        "venue": "arXiv preprint"
+      },
+      "precursors": [
+        {
+          "title": "Rae et al., Sparse Access Memory — reads only the K nearest memory words",
+          "date": "2016-10-27",
+          "url": "https://arxiv.org/abs/1610.09027",
+          "note": "Top-K reads in a memory-augmented network."
+        },
+        {
+          "title": "Sparse Attentive Backtracking (Ke et al.) — 'selects and normalizes only the k top greatest raw attention weights' over past RNN states",
+          "date": "2018-09-11",
+          "url": "https://arxiv.org/abs/1809.03702",
+          "note": "The same top-k-then-renormalise operation, in an RNN; cited by Zhao et al."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Content-based sparse siblings (not adoptions): Reformer (LSH buckets)",
+          "date": "2020-01-13",
+          "url": "https://arxiv.org/abs/2001.04451"
+        },
+        {
+          "what": "Routing Transformer (k-means routing)",
+          "date": "2020-03-12",
+          "url": "https://arxiv.org/abs/2003.05997"
+        },
+        {
+          "what": "DeepSeek-V3.2: a lightning indexer chooses 2,048 key-value tokens per query (released as V3.2-Exp on 2025-09-29)",
+          "date": "2025-12-02",
+          "url": "https://arxiv.org/abs/2512.02556"
+        }
+      ],
+      "notes": "Top-k selection inside Transformer attention appears in 2019, with the same operation in RNN and memory models in 2016–2018. The 2019 paper’s motivation was concentration (quality), not speed: it still scored every key. What 2025 adds (NSA, DSA) is a cheap trained selector that makes the selection pay for itself at scale.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "DeepSeek-V3.2-Exp (indexer + top-k)",
+        "date": "2025-09-29",
+        "url": "https://api-docs.deepseek.com/news/news250929"
+      }
+    },
+    {
+      "id": "sliding-window",
+      "name": "Sliding-window attention",
+      "short": "Sliding window",
+      "date": "2020-04-10",
+      "dateEvent": "arXiv v1 of Longformer, which names and studies 'sliding window attention' (plus dilated and global variants)",
+      "kind": "Sparse / local attention pattern",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "compute",
+      "effects": {
+        "compute": 2,
+        "memory": 2,
+        "position": 1,
+        "fidelity": -2
+      },
+      "source": {
+        "title": "Longformer: The Long-Document Transformer",
+        "authors": "Beltagy, Peters, Cohan",
+        "id": "arXiv:2004.05150",
+        "url": "https://arxiv.org/abs/2004.05150",
+        "venue": "arXiv preprint"
+      },
+      "precursors": [
+        {
+          "title": "Chorowski et al. — attention restricted to a window around the previous alignment (speech, RNN)",
+          "date": "2015-06-24",
+          "url": "https://arxiv.org/abs/1506.07503",
+          "note": "Windowed attention in an RNN model."
+        },
+        {
+          "title": "Luong et al. — 'local attention' over a window around an aligned position (RNN NMT)",
+          "date": "2015-08-17",
+          "url": "https://arxiv.org/abs/1508.04025",
+          "note": "Windowed attention in an RNN encoder-decoder."
+        },
+        {
+          "title": "Liu et al. — local attention within non-overlapping blocks",
+          "date": "2018-01-30",
+          "url": "https://arxiv.org/abs/1801.10198",
+          "note": "Blocks rather than a per-token sliding band."
+        },
+        {
+          "title": "Image Transformer (Parmar et al.) — local 1D/2D attention",
+          "date": "2018-02-15",
+          "url": "https://arxiv.org/abs/1802.05751",
+          "note": "Local attention for images."
+        },
+        {
+          "title": "Sparse Transformer — one head attends to the previous l positions",
+          "date": "2019-04-23",
+          "url": "https://arxiv.org/abs/1904.10509",
+          "note": "Computationally a sliding band for that head, used inside a factorized pattern (images and music)."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Mistral 7B: window 4096 and a rolling-buffer KV cache",
+          "date": "2023-10-10",
+          "url": "https://arxiv.org/abs/2310.06825"
+        },
+        {
+          "what": "Gemma 2: local sliding-window and global attention layers alternate",
+          "date": "2024-07-31",
+          "url": "https://arxiv.org/abs/2408.00118"
+        }
+      ],
+      "notes": "Ambiguous origin, made explicit: a causal band of width W already existed as one head of the 2019 Sparse Transformer. We date the entry to Longformer because that is where the mechanism is named, isolated and evaluated as such.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "Mistral 7B",
+        "date": "2023-10-10",
+        "url": "https://arxiv.org/abs/2310.06825"
+      }
+    },
+    {
+      "id": "linear",
+      "name": "Linear attention",
+      "short": "Linear attention",
+      "date": "2020-06-29",
+      "dateEvent": "arXiv v1 of Katharopoulos et al., 'Transformers are RNNs'",
+      "kind": "Softmax-free attention / recurrent state",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "compute",
+      "effects": {
+        "compute": 2,
+        "memory": 2,
+        "position": 1,
+        "fidelity": -2
+      },
+      "source": {
+        "title": "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention",
+        "authors": "Katharopoulos, Vyas, Pappas, Fleuret",
+        "id": "arXiv:2006.16236",
+        "url": "https://arxiv.org/abs/2006.16236",
+        "venue": "ICML 2020"
+      },
+      "precursors": [
+        {
+          "title": "Efficient Attention: Attention with Linear Complexities (Shen et al.)",
+          "date": "2018-12-04",
+          "url": "https://arxiv.org/abs/1812.01243",
+          "note": "Reorders the product to avoid the T×T matrix, using separate normalisations of Q and K; vision-focused and not framed as a causal recurrent state."
+        },
+        {
+          "title": "Fast-weight memories (Schmidhuber, Neural Computation 1992)",
+          "date": "1992",
+          "url": "https://doi.org/10.1162/neco.1992.4.1.131",
+          "note": "The 'sum of outer products as memory' idea; bibliographic details from library records, not a fetched first page."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Siblings the same year: Linformer (low-rank projection, a different idea)",
+          "date": "2020-06-08",
+          "url": "https://arxiv.org/abs/2006.04768"
+        },
+        {
+          "what": "Performer (random-feature softmax approximation)",
+          "date": "2020-09-30",
+          "url": "https://arxiv.org/abs/2009.14794"
+        },
+        {
+          "what": "MiniMax-01: one softmax block after every seven 'lightning' linear-attention blocks",
+          "date": "2025-01-14",
+          "url": "https://arxiv.org/abs/2501.08313"
+        }
+      ],
+      "notes": "Dated to Katharopoulos et al. because it gives the causal running-state form used here (S = Σ v kᵀ, y = S q) and the explicit RNN equivalence. Earlier reorderings exist and are listed.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "MiniMax-01 (lightning attention hybrid)",
+        "date": "2025-01-14",
+        "url": "https://arxiv.org/abs/2501.08313"
+      }
+    },
+    {
+      "id": "delta",
+      "name": "The delta rule for linear attention",
+      "short": "Delta rule",
+      "date": "2021-02-22",
+      "dateEvent": "arXiv v1 of Schlag, Irie & Schmidhuber, which introduces the delta-rule update for linear Transformers",
+      "kind": "Recurrent-state write rule",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "fidelity",
+      "effects": {
+        "compute": 2,
+        "memory": 2,
+        "position": 0,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Linear Transformers Are Secretly Fast Weight Programmers",
+        "authors": "Schlag, Irie, Schmidhuber",
+        "id": "arXiv:2102.11174",
+        "url": "https://arxiv.org/abs/2102.11174",
+        "venue": "ICML 2021"
+      },
+      "precursors": [
+        {
+          "title": "Widrow & Hoff, 'Adaptive switching circuits' (IRE WESCON) — the delta / LMS learning rule",
+          "date": "1960",
+          "url": "",
+          "note": "The rule itself is from 1960 (bibliographic record, not a fetched copy). What 2021 adds is using it as the write rule of a linear-attention memory."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Parallelizing DeltaNet over sequence length makes it trainable at scale",
+          "date": "2024-06-10",
+          "url": "https://arxiv.org/abs/2406.06484"
+        }
+      ],
+      "notes": "The rule itself is from 1960. This 2021 paper makes it the write rule of a linear-attention memory; the 2024 paper by Yang et al. made such “DeltaNet” layers fast to train in parallel.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "Qwen3-Next (Gated DeltaNet layers)",
+        "date": "2025-09-11",
+        "url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"
+      }
+    },
+    {
+      "id": "rope",
+      "name": "Rotary position embedding (RoPE)",
+      "short": "RoPE",
+      "date": "2021-04-20",
+      "dateEvent": "arXiv v1 of RoFormer (Su et al.)",
+      "kind": "Position encoding",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 2,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+        "authors": "Su, Lu, Pan, Murtadha, Wen, Liu",
+        "id": "arXiv:2104.09864",
+        "url": "https://arxiv.org/abs/2104.09864",
+        "venue": "Neurocomputing (2024)"
+      },
+      "precursors": [
+        {
+          "title": "Jianlin Su's Chinese-language blog posts introducing rotary position embedding (kexue.fm / spaces.ac.cn)",
+          "date": "2021",
+          "url": "https://spaces.ac.cn/archives/8265",
+          "note": "EleutherAI's post of 20 April 2021 says Su developed RoPE 'in a series of blog posts earlier this year'. The blog refused every fetch (HTTP 403), so we do not claim an exact date; a March 2021 date circulates but is unverified."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "EleutherAI blog 'Rotary Embeddings: A Relative Revolution' reports RoPE implemented in GPT-NeoX and Mesh Transformer JAX",
+          "date": "2021-04-20",
+          "url": "https://blog.eleuther.ai/rotary-embeddings/"
+        }
+      ],
+      "notes": "The idea first appeared in the author’s Chinese-language blog earlier in 2021; the arXiv paper is the earliest dated, citable primary source, so it sets the date.",
+      "verification": "verified-primary (earlier blog date unverified)",
+      "firstUse": {
+        "model": "GPT-NeoX / Mesh Transformer JAX (EleutherAI)",
+        "date": "2021-04-20",
+        "url": "https://blog.eleuther.ai/rotary-embeddings/"
+      }
+    },
+    {
+      "id": "alibi",
+      "name": "ALiBi (attention with linear biases)",
+      "short": "ALiBi",
+      "date": "2021-08-27",
+      "dateEvent": "arXiv v1 of Press, Smith & Lewis, 'Train Short, Test Long'",
+      "kind": "Position encoding (score bias)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 2,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation",
+        "authors": "Press, Smith, Lewis",
+        "id": "arXiv:2108.12409",
+        "url": "https://arxiv.org/abs/2108.12409",
+        "venue": "ICLR 2022"
+      },
+      "precursors": [
+        {
+          "title": "T5 — a learned scalar bias per head added to attention logits, indexed by bucketed relative distance",
+          "date": "2019-10-23",
+          "url": "https://arxiv.org/abs/1910.10683",
+          "note": "A learned distance bias on the scores; ALiBi replaces it with a fixed, non-learned linear penalty (the ALiBi paper compares against 'the T5 bias')."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "BLOOM (176B) released with ALiBi",
+          "date": "2022-07",
+          "url": "https://huggingface.co/bigscience/bloom",
+          "note": "Model-card release month; the BLOOM paper (arXiv:2211.05100) followed in November 2022."
+        },
+        {
+          "what": "MPT-7B replaces positional embeddings with ALiBi",
+          "date": "2023-05-05",
+          "url": "https://www.databricks.com/blog/mpt-7b"
+        }
+      ],
+      "notes": "",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "BLOOM",
+        "date": "2022-07",
+        "url": "https://huggingface.co/bigscience/bloom"
+      }
+    },
+    {
+      "id": "nope",
+      "name": "No positional encoding at all (NoPE)",
+      "short": "NoPE",
+      "date": "2022-03-30",
+      "dateEvent": "arXiv v1 of Haviv et al., showing causal LMs without positional encodings stay competitive",
+      "kind": "Position encoding (absence of one)",
+      "tier": "connective",
+      "inClassList": false,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 1,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Transformer Language Models without Positional Encodings Still Learn Positional Information",
+        "authors": "Haviv, Ram, Press, Izsak, Levy",
+        "id": "arXiv:2203.16634",
+        "url": "https://arxiv.org/abs/2203.16634",
+        "venue": "Findings of EMNLP 2022"
+      },
+      "precursors": [],
+      "adoption": [
+        {
+          "what": "Kazemnejad et al. name the setting NoPE and find it length-generalises better than RoPE, ALiBi or absolute embeddings in small decoder-only experiments",
+          "date": "2023-05-31",
+          "url": "https://arxiv.org/abs/2305.19466"
+        }
+      ],
+      "notes": "Added because DroPE (2025) is built on this fact, and because it refines a common statement: a causal decoder is not a pure set-reader — the mask itself leaks order.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "flash",
+      "name": "FlashAttention (IO-aware exact attention)",
+      "short": "FlashAttention",
+      "date": "2022-05-27",
+      "dateEvent": "arXiv v1 of Dao et al.",
+      "kind": "Kernel / implementation (exact)",
+      "tier": "milestone",
+      "inClassList": false,
+      "primary": "compute",
+      "effects": {
+        "compute": 2,
+        "memory": 0,
+        "position": 1,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+        "authors": "Dao, Fu, Ermon, Rudra, Ré",
+        "id": "arXiv:2205.14135",
+        "url": "https://arxiv.org/abs/2205.14135",
+        "venue": "NeurIPS 2022"
+      },
+      "precursors": [
+        {
+          "title": "Online normalizer calculation for softmax (Milakov & Gimelshein)",
+          "date": "2018-05-08",
+          "url": "https://arxiv.org/abs/1805.02867",
+          "note": "The running max / running sum trick that lets softmax be computed tile by tile."
+        },
+        {
+          "title": "Self-attention Does Not Need O(n²) Memory (Rabe & Staats)",
+          "date": "2021-12-10",
+          "url": "https://arxiv.org/abs/2112.05682",
+          "note": "Chunked exact attention with O(√n)-style memory; FlashAttention adds the GPU memory-hierarchy design."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "FlashAttention-2",
+          "date": "2023-07-17",
+          "url": "https://arxiv.org/abs/2307.08691"
+        }
+      ],
+      "notes": "Not in the core list, and arguably the most consequential omission: it changed which bill mattered by making exact attention cheap in memory traffic, without approximating anything. Activation memory becomes linear in sequence length, but the FLOP count is still quadratic and the inference KV cache is unchanged.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "hybrid",
+      "name": "Hybrid stacks: mostly state layers, a few attention layers",
+      "short": "Hybrid schedules",
+      "date": "2022-12-28",
+      "dateEvent": "arXiv v1 of H3, whose hybrid model keeps two attention layers among state-space layers",
+      "kind": "Architecture schedule across depth",
+      "tier": "connective",
+      "inClassList": false,
+      "primary": "memory",
+      "effects": {
+        "compute": 1,
+        "memory": 1,
+        "position": 0,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Hungry Hungry Hippos: Towards Language Modeling with State Space Models",
+        "authors": "Fu, Dao, Saab, Thomas, Rudra, Ré",
+        "id": "arXiv:2212.14052",
+        "url": "https://arxiv.org/abs/2212.14052",
+        "venue": "ICLR 2023"
+      },
+      "precursors": [
+        {
+          "title": "GPT-3 alternates dense and locally banded attention layers",
+          "date": "2020-05-28",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "note": "Mixing mechanisms across depth, but both are softmax attention."
+        },
+        {
+          "title": "SPADE — a state-space layer at the bottom of an otherwise (local-)attention Transformer",
+          "date": "2022-12-15",
+          "url": "https://arxiv.org/abs/2212.08136",
+          "note": "Thirteen days earlier, with the opposite ratio (mostly attention)."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Griffin: gated linear recurrences mixed with local attention",
+          "date": "2024-02-29",
+          "url": "https://arxiv.org/abs/2402.19427"
+        },
+        {
+          "what": "Jamba: 1 attention layer per 7 Mamba layers (paper reports 1:3 vs 1:7 made little difference)",
+          "date": "2024-03-28",
+          "url": "https://arxiv.org/abs/2403.19887"
+        },
+        {
+          "what": "Qwen3-Next-80B-A3B: 3 Gated DeltaNet layers per gated-attention layer",
+          "date": "2025-09-11",
+          "url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct",
+          "note": "Release date from the official QwenLM README news log; layer layout from the Hugging Face model card."
+        },
+        {
+          "what": "Kimi Linear: 3 KDA layers per MLA layer (ablated against 7:1 and 1:1)",
+          "date": "2025-10-30",
+          "url": "https://arxiv.org/abs/2510.26692"
+        }
+      ],
+      "notes": "The idea behind DDDGDDDG-style layer schedules. H3 is dated here because its hybrid is the “mostly state, a few attention layers” shape later production models use; we do not claim it was the first hybrid of any kind.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "Jamba",
+        "date": "2024-03-28",
+        "url": "https://arxiv.org/abs/2403.19887"
+      }
+    },
+    {
+      "id": "gqa",
+      "name": "Grouped-query attention (GQA)",
+      "short": "GQA",
+      "date": "2023-05-22",
+      "dateEvent": "arXiv v1 of Ainslie et al.",
+      "kind": "KV sharing",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "memory",
+      "effects": {
+        "compute": 0,
+        "memory": 1,
+        "position": 0,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints",
+        "authors": "Ainslie, Lee-Thorp, de Jong, Zemlyanskiy, Lebrón, Sanghai",
+        "id": "arXiv:2305.13245",
+        "url": "https://arxiv.org/abs/2305.13245",
+        "venue": "EMNLP 2023"
+      },
+      "precursors": [
+        {
+          "title": "Multi-query attention (Shazeer)",
+          "date": "2019-11-06",
+          "url": "https://arxiv.org/abs/1911.02150",
+          "note": "GQA interpolates between MHA and this."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Llama 2: the 34B and 70B models use GQA",
+          "date": "2023-07-18",
+          "url": "https://arxiv.org/abs/2307.09288"
+        }
+      ],
+      "notes": "Adopted by a flagship open model within two months — compare MQA's two-and-a-half-year wait.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "Llama 2 (34B, 70B)",
+        "date": "2023-07-18",
+        "url": "https://arxiv.org/abs/2307.09288"
+      }
+    },
+    {
+      "id": "pi",
+      "name": "Position Interpolation",
+      "short": "Position Interpolation",
+      "date": "2023-06-27",
+      "dateEvent": "arXiv v1 of Chen et al. (Meta)",
+      "kind": "Context extension (RoPE rescaling)",
+      "tier": "connective",
+      "inClassList": false,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 2,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Extending Context Window of Large Language Models via Positional Interpolation",
+        "authors": "Chen, Wong, Chen, Tian",
+        "id": "arXiv:2306.15595",
+        "url": "https://arxiv.org/abs/2306.15595",
+        "venue": "arXiv preprint"
+      },
+      "precursors": [
+        {
+          "title": "kaiokendev, 'Things I'm Learning While Training SuperHOT' — linear scaling of RoPE positions",
+          "date": "2023-06-20",
+          "url": "https://kaiokendev.github.io/context",
+          "note": "Date from the author's own changelog ('Added Extending Context (6/20/23)'). YaRN credits it as concurrent with PI."
+        }
+      ],
+      "adoption": [],
+      "notes": "Added because NTK-aware scaling and YaRN are both reactions to it; without it their motivation is invisible.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "ntk",
+      "name": "NTK-aware RoPE scaling",
+      "short": "NTK-aware",
+      "date": "2023-06-29",
+      "dateEvent": "Reddit post by u/bloc97 on r/LocalLLaMA (08:21 UTC)",
+      "kind": "Context extension (RoPE base change)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 2,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "NTK-Aware Scaled RoPE allows LLaMA models to have extended (8k+) context size without any fine-tuning and minimal perplexity degradation",
+        "authors": "bloc97 (Reddit)",
+        "id": "reddit:14lz7j5",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/",
+        "venue": "r/LocalLLaMA post"
+      },
+      "precursors": [
+        {
+          "title": "Position Interpolation / SuperHOT linear scaling",
+          "date": "2023-06-27",
+          "url": "https://arxiv.org/abs/2306.15595",
+          "note": "The post explicitly changes the base instead of the scale."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "u/emozilla's 'Dynamically Scaled RoPE' post",
+          "date": "2023-06-30",
+          "url": "https://www.reddit.com/r/LocalLLaMA/comments/14mrgpr/"
+        },
+        {
+          "what": "Code Llama raises the RoPE base period from 10,000 to 1,000,000 for long-context fine-tuning",
+          "date": "2023-08-24",
+          "url": "https://arxiv.org/abs/2308.12950"
+        }
+      ],
+      "notes": "Primary source is a forum post, not a paper. Timestamp read from the Pullpush archive of Reddit (reddit.com blocked our fetcher); YaRN's paper cites the same post as the origin. The formula b' = b·s^(d/(d−2)) is as written in YaRN Appendix A.",
+      "verification": "verified-mirror",
+      "firstUse": {
+        "model": "Code Llama (raised RoPE base)",
+        "date": "2023-08-24",
+        "url": "https://arxiv.org/abs/2308.12950"
+      }
+    },
+    {
+      "id": "yarn",
+      "name": "YaRN",
+      "short": "YaRN",
+      "date": "2023-08-31",
+      "dateEvent": "arXiv v1 of Peng, Quesnelle, Fan & Shippole",
+      "kind": "Context extension (RoPE rescaling + temperature)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 2,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "YaRN: Efficient Context Window Extension of Large Language Models",
+        "authors": "Peng, Quesnelle, Fan, Shippole",
+        "id": "arXiv:2309.00071",
+        "url": "https://arxiv.org/abs/2309.00071",
+        "venue": "ICLR 2024"
+      },
+      "precursors": [
+        {
+          "title": "bloc97's NTK-by-parts proposal (GitHub PR, cited by YaRN)",
+          "date": "2023",
+          "url": "https://arxiv.org/abs/2309.00071",
+          "note": "Credited inside the YaRN paper as a GitHub pull request; the PR date was not fetched, so only “before YaRN” is claimed."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "DeepSeek-V2 extends 4K → 128K with YaRN (s = 40)",
+          "date": "2024-05-07",
+          "url": "https://arxiv.org/abs/2405.04434"
+        },
+        {
+          "what": "gpt-oss model card extends its dense layers to 131,072 tokens with YaRN",
+          "date": "2025-08-08",
+          "url": "https://arxiv.org/abs/2508.10925",
+          "note": "Date is the model card’s arXiv v1; the open-weight release itself was a few days earlier (early August 2025)."
+        }
+      ],
+      "notes": "",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "DeepSeek-V2",
+        "date": "2024-05-07",
+        "url": "https://arxiv.org/abs/2405.04434"
+      }
+    },
+    {
+      "id": "sinks",
+      "name": "Attention sinks (StreamingLLM)",
+      "short": "Attention sinks",
+      "date": "2023-09-29",
+      "dateEvent": "arXiv v1 of Xiao et al., 'Efficient Streaming Language Models with Attention Sinks'",
+      "kind": "Inference-time KV policy (built on an observed phenomenon)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "memory",
+      "effects": {
+        "compute": 1,
+        "memory": 2,
+        "position": 2,
+        "fidelity": -2
+      },
+      "source": {
+        "title": "Efficient Streaming Language Models with Attention Sinks",
+        "authors": "Xiao, Tian, Chen, Han, Lewis",
+        "id": "arXiv:2309.17453",
+        "url": "https://arxiv.org/abs/2309.17453",
+        "venue": "ICLR 2024"
+      },
+      "precursors": [
+        {
+          "title": "What Does BERT Look At? — heads attend heavily to delimiter tokens",
+          "date": "2019-06-11",
+          "url": "https://arxiv.org/abs/1906.04341",
+          "note": "The phenomenon was observed years earlier."
+        },
+        {
+          "title": "Quantizable Transformers — heads that 'do nothing' create outliers",
+          "date": "2023-06-22",
+          "url": "https://arxiv.org/abs/2306.12929",
+          "note": "Same root cause, studied for quantisation."
+        },
+        {
+          "title": "Evan Miller, 'Attention Is Off By One' (blog)",
+          "date": "2023-07-24",
+          "url": "https://www.evanmiller.org/attention-is-off-by-one.html",
+          "note": "Proposes adding 1 to the softmax denominator so heads can attend to nothing."
+        },
+        {
+          "title": "Vision Transformers Need Registers",
+          "date": "2023-09-28",
+          "url": "https://arxiv.org/abs/2309.16588",
+          "note": "One day earlier, the same phenomenon in vision models."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Gated Attention (Qiu et al.): a sigmoid gate after attention mitigates the sink",
+          "date": "2025-05-10",
+          "url": "https://arxiv.org/abs/2505.06708"
+        },
+        {
+          "what": "gpt-oss model card: each head has a learned bias in the softmax denominator",
+          "date": "2025-08-08",
+          "url": "https://arxiv.org/abs/2508.10925",
+          "note": "Date is the model card’s arXiv v1; the open-weight release itself was a few days earlier (early August 2025)."
+        }
+      ],
+      "notes": "The name and the streaming recipe (keep 4 initial tokens + a rolling window) date to StreamingLLM; the phenomenon was noticed earlier.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "gpt-oss (learned sink bias, model card)",
+        "date": "2025-08-08",
+        "url": "https://arxiv.org/abs/2508.10925"
+      }
+    },
+    {
+      "id": "mamba",
+      "name": "Selective state spaces (Mamba)",
+      "short": "Mamba",
+      "date": "2023-12-01",
+      "dateEvent": "arXiv v1 of Gu & Dao",
+      "kind": "Attention replacement (selective recurrent state)",
+      "tier": "milestone",
+      "inClassList": false,
+      "primary": "memory",
+      "effects": {
+        "compute": 2,
+        "memory": 2,
+        "position": 1,
+        "fidelity": -2
+      },
+      "source": {
+        "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+        "authors": "Gu, Dao",
+        "id": "arXiv:2312.00752",
+        "url": "https://arxiv.org/abs/2312.00752",
+        "venue": "arXiv preprint (COLM 2024 per secondary citations; not verified)"
+      },
+      "precursors": [
+        {
+          "title": "RetNet — a fixed (not input-dependent) decay on a linear-attention state",
+          "date": "2023-07-17",
+          "url": "https://arxiv.org/abs/2307.08621",
+          "note": "Related forgetting mechanism, not a selective SSM."
+        },
+        {
+          "title": "Random Feature Attention — optional gate for recency",
+          "date": "2021-03-03",
+          "url": "https://arxiv.org/abs/2103.02143",
+          "note": "Related gating idea in linear attention, not a selective SSM."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Gated Linear Attention (data-dependent gates for linear attention)",
+          "date": "2023-12-11",
+          "url": "https://arxiv.org/abs/2312.06635"
+        },
+        {
+          "what": "Mamba-2: state space duality, linking SSMs and linear attention",
+          "date": "2024-05-31",
+          "url": "https://arxiv.org/abs/2405.21060"
+        },
+        {
+          "what": "Jamba hybrid (Mamba + attention)",
+          "date": "2024-03-28",
+          "url": "https://arxiv.org/abs/2403.19887"
+        }
+      ],
+      "notes": "Not attention, but added because it is the moment fixed-size state became competitive again and because Gated DeltaNet's title is literally 'Improving Mamba2 with Delta Rule'.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "Jamba",
+        "date": "2024-03-28",
+        "url": "https://arxiv.org/abs/2403.19887"
+      }
+    },
+    {
+      "id": "mla",
+      "name": "Multi-head latent attention (MLA)",
+      "short": "MLA",
+      "date": "2024-05-07",
+      "dateEvent": "arXiv v1 of the DeepSeek-V2 technical report",
+      "kind": "KV compression (low-rank latent cache)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "memory",
+      "effects": {
+        "compute": -1,
+        "memory": 2,
+        "position": 0,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model",
+        "authors": "DeepSeek-AI",
+        "id": "arXiv:2405.04434",
+        "url": "https://arxiv.org/abs/2405.04434",
+        "venue": "Technical report"
+      },
+      "precursors": [],
+      "adoption": [
+        {
+          "what": "DeepSeek-V3 keeps MLA (latent 512, decoupled RoPE dims 64)",
+          "date": "2024-12-27",
+          "url": "https://arxiv.org/abs/2412.19437"
+        },
+        {
+          "what": "Kimi Linear's global layers are MLA",
+          "date": "2025-10-30",
+          "url": "https://arxiv.org/abs/2510.26692"
+        }
+      ],
+      "notes": "DeepSeek reports a 93.3% smaller KV cache than DeepSeek 67B and a cache equal to GQA with 2.25 groups.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "DeepSeek-V2",
+        "date": "2024-05-07",
+        "url": "https://arxiv.org/abs/2405.04434"
+      }
+    },
+    {
+      "id": "gated-deltanet",
+      "name": "Gated DeltaNet",
+      "short": "Gated DeltaNet",
+      "date": "2024-12-09",
+      "dateEvent": "arXiv v1 of Yang, Kautz & Hatamizadeh",
+      "kind": "Recurrent-state write rule (delta + decay gate)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "memory",
+      "effects": {
+        "compute": 2,
+        "memory": 2,
+        "position": 0,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Gated Delta Networks: Improving Mamba2 with Delta Rule",
+        "authors": "Yang, Kautz, Hatamizadeh",
+        "id": "arXiv:2412.06464",
+        "url": "https://arxiv.org/abs/2412.06464",
+        "venue": "ICLR 2025"
+      },
+      "precursors": [
+        {
+          "title": "Parallelizing Linear Transformers with the Delta Rule (Yang et al.)",
+          "date": "2024-06-10",
+          "url": "https://arxiv.org/abs/2406.06484",
+          "note": "Made DeltaNet trainable at scale; also tested DeltaNet + attention hybrids."
+        },
+        {
+          "title": "Mamba-2",
+          "date": "2024-05-31",
+          "url": "https://arxiv.org/abs/2405.21060",
+          "note": "Source of the scalar decay gate."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Qwen3-Next-80B-A3B: 3 Gated DeltaNet layers : 1 gated-attention layer",
+          "date": "2025-09-11",
+          "url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct",
+          "note": "Release date from the official QwenLM README news log; layer layout from the Hugging Face model card."
+        },
+        {
+          "what": "Kimi Linear: Kimi Delta Attention 'extends Gated DeltaNet with a finer-grained gating mechanism'",
+          "date": "2025-10-30",
+          "url": "https://arxiv.org/abs/2510.26692"
+        },
+        {
+          "what": "Qwen3.5-397B-A17B keeps the 3:1 Gated DeltaNet / gated-attention layout",
+          "date": "2026-02-16",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "note": "Release date from the official QwenLM README news log; layout from the model card/config (full_attention_interval = 4)."
+        }
+      ],
+      "notes": "Qwen release dates are from the official QwenLM README news log; the qwen.ai blog pages are script-rendered and their dates were not read.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "Qwen3-Next",
+        "date": "2025-09-11",
+        "url": "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct"
+      }
+    },
+    {
+      "id": "nsa",
+      "name": "Native Sparse Attention (DeepSeek)",
+      "short": "NSA",
+      "date": "2025-02-16",
+      "dateEvent": "arXiv v1 of Yuan et al. (DeepSeek-AI & Peking University)",
+      "kind": "Trainable sparse attention (compress + select + window)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "compute",
+      "effects": {
+        "compute": 2,
+        "memory": 0,
+        "position": 1,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
+        "authors": "Yuan et al. (DeepSeek-AI, PKU)",
+        "id": "arXiv:2502.11089",
+        "url": "https://arxiv.org/abs/2502.11089",
+        "venue": "ACL 2025 (Best Paper)"
+      },
+      "precursors": [
+        {
+          "title": "Explicit Sparse Transformer (top-k attention)",
+          "date": "2019-12-25",
+          "url": "https://arxiv.org/abs/1912.11637"
+        },
+        {
+          "title": "Liu et al. memory-compressed attention (strided convolution over K/V)",
+          "date": "2018-01-30",
+          "url": "https://arxiv.org/abs/1801.10198",
+          "note": "Early sequence compression of keys and values."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Concurrent work: MoBA (Moonshot AI), mixture-of-block attention, two days later",
+          "date": "2025-02-18",
+          "url": "https://arxiv.org/abs/2502.13189"
+        }
+      ],
+      "notes": "First of three DeepSeek stops in the class's 'compressed and sparse attention as DeepSeek does it'. Branch settings from the paper: compression block 32 / stride 16, selection block 64, 16 selected blocks, window 512.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "dsa",
+      "name": "DeepSeek Sparse Attention (lightning indexer + top-k)",
+      "short": "DSA",
+      "date": "2025-09-29",
+      "dateEvent": "DeepSeek-V3.2-Exp release announcement (DeepSeek API docs news)",
+      "kind": "Trainable sparse attention (indexer + token top-k)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "compute",
+      "effects": {
+        "compute": 2,
+        "memory": 0,
+        "position": 1,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "Introducing DeepSeek-V3.2-Exp",
+        "authors": "DeepSeek-AI",
+        "id": "deepseek-news-250929",
+        "url": "https://api-docs.deepseek.com/news/news250929",
+        "venue": "Release; details in the V3.2 report (arXiv:2512.02556, v1 2025-12-02)"
+      },
+      "precursors": [
+        {
+          "title": "Native Sparse Attention",
+          "date": "2025-02-16",
+          "url": "https://arxiv.org/abs/2502.11089"
+        }
+      ],
+      "adoption": [
+        {
+          "what": "DeepSeek-V3.2 technical report: indexer + top-k = 2048 under MLA; core attention O(L·k), indexer still O(L²) but light",
+          "date": "2025-12-02",
+          "url": "https://arxiv.org/abs/2512.02556"
+        }
+      ],
+      "notes": "The release page does not describe the mechanism; the technical details come from the later V3.2 report.",
+      "verification": "verified-primary",
+      "firstUse": {
+        "model": "DeepSeek-V3.2-Exp",
+        "date": "2025-09-29",
+        "url": "https://api-docs.deepseek.com/news/news250929"
+      }
+    },
+    {
+      "id": "drope",
+      "name": "DroPE (dropping positional embeddings after pretraining)",
+      "short": "DroPE",
+      "date": "2025-12-13",
+      "dateEvent": "arXiv v1 of Gelberg, Eguchi, Akiba & Cetin (Sakana AI)",
+      "kind": "Context extension (remove RoPE, recalibrate)",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "position",
+      "effects": {
+        "compute": 0,
+        "memory": 0,
+        "position": 2,
+        "fidelity": 0
+      },
+      "source": {
+        "title": "Extending the Context of Pretrained LLMs by Dropping Their Positional Embeddings",
+        "authors": "Gelberg, Eguchi, Akiba, Cetin",
+        "id": "arXiv:2512.12167",
+        "url": "https://arxiv.org/abs/2512.12167",
+        "venue": "arXiv preprint"
+      },
+      "precursors": [
+        {
+          "title": "NoPE (Haviv et al.; Kazemnejad et al.)",
+          "date": "2022-03-30",
+          "url": "https://arxiv.org/abs/2203.16634",
+          "note": "Causal LMs can work without explicit positions."
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Sakana AI code release",
+          "date": "2025-12-26",
+          "url": "https://github.com/SakanaAI/DroPE",
+          "note": "Repository creation date; Sakana AI’s blog post is dated 12 January 2026."
+        }
+      ],
+      "notes": "The public paper specifies the algorithm: remove RoPE from every layer after pretraining, then continue training briefly at the original context length, with no long-context fine-tuning.",
+      "verification": "verified-primary"
+    },
+    {
+      "id": "csa",
+      "name": "Compressed Sparse + Heavily Compressed Attention (DeepSeek-V4)",
+      "short": "DeepSeek-V4 CSA/HCA",
+      "date": "2026-04-24",
+      "dateEvent": "DeepSeek-V4 Preview release announcement (DeepSeek API docs news)",
+      "kind": "Sequence compression + trainable sparse selection",
+      "tier": "milestone",
+      "inClassList": true,
+      "primary": "memory",
+      "effects": {
+        "compute": 2,
+        "memory": 2,
+        "position": 1,
+        "fidelity": -1
+      },
+      "source": {
+        "title": "DeepSeek-V4 Preview release",
+        "authors": "DeepSeek-AI",
+        "id": "deepseek-news-260424",
+        "url": "https://api-docs.deepseek.com/news/news260424",
+        "venue": "Release + technical report"
+      },
+      "precursors": [
+        {
+          "title": "DeepSeek Sparse Attention (V3.2-Exp)",
+          "date": "2025-09-29",
+          "url": "https://api-docs.deepseek.com/news/news250929"
+        },
+        {
+          "title": "NSA's compressed-token branch",
+          "date": "2025-02-16",
+          "url": "https://arxiv.org/abs/2502.11089"
+        }
+      ],
+      "adoption": [
+        {
+          "what": "Technical report on arXiv",
+          "date": "2026-04-26",
+          "url": "https://arxiv.org/abs/2606.19348"
+        }
+      ],
+      "notes": "The release page says only “token-wise compression + DSA”; the names CSA and HCA and all numbers come from the technical report (“DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence”, arXiv:2606.19348, v1 submitted 26 April 2026 — two days after the release; the ID prefix is unusual for an April submission but the abstract page states this date). From the report: CSA compresses every 4 tokens into one entry and applies DSA-style top-k (k = 1,024 for V4-Pro, 512 for V4-Flash) plus a 128-token uncompressed window; HCA compresses 128 tokens per entry and attends densely; CSA and HCA layers are interleaved; RoPE is applied to the last 64 dimensions. At 1M tokens the report gives V4-Pro 27% of V3.2’s single-token FLOPs and 10% of its KV cache (V4-Flash: 10% and 7%).",
+      "verification": "verified-primary-release",
+      "firstUse": {
+        "model": "DeepSeek-V4 Preview",
+        "date": "2026-04-24",
+        "url": "https://api-docs.deepseek.com/news/news260424"
+      }
+    }
+  ]
+}

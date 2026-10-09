@@ -1,0 +1,20 @@
+{
+  "name": "attention-timeline",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && node scripts/check-ledger.mjs && node scripts/gen-sources.mjs --check && vite build",
+    "preview": "vite preview",
+    "test": "node --experimental-strip-types --no-warnings --test \"tests/**/*.test.ts\"",
+    "check": "node scripts/check-ledger.mjs",
+    "sources": "node scripts/gen-sources.mjs",
+    "qa": "node scripts/qa.mjs http://localhost:4173/ qa-shots"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.4"
+  }
+}
